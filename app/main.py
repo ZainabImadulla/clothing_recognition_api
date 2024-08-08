@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+from starlette.middleware.cors import CORSMiddleware
 from app.model.model import predict_image
 
 
@@ -11,6 +11,17 @@ class TextIn(BaseModel):
 
 class PredictionOut(BaseModel):
     clothing: str
+
+origins = [
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins= origins,  # Replace with your React app's domain
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
