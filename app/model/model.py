@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 import requests
 
-new_model = tf.keras.models.load_model("model.keras")
+new_model = tf.keras.models.load_model("app/model/model.h5")
 x_mean = 72.94035223214286
 x_std = 90.02118235130519
 epsilon = 1e-10
